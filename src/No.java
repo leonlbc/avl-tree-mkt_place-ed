@@ -1,8 +1,8 @@
-public class No {
-    int dado;
-    No esquerda, direita;
+public class No<T> {
+    T dado;
+    No<T> esquerda, direita;
 
-    public No(int dado){ 
+    public No(T dado){ 
         this.dado = dado; 
         this.esquerda = this.direita = null; 
     }
