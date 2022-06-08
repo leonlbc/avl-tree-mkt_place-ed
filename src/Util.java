@@ -54,11 +54,12 @@ public class Util {
 		Produto produto;
 		produto = produtoPorCodigo();
 
-		/*if(ab.pesquisar(produto) == null) {
+		if(ab.pesquisar(produto).isPresent()) {
+            ab.deletaDado(produto);
 			JOptionPane.showMessageDialog(null, "Produto removido!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Produto nao Existe!");
-		}*/
+		}
 	}
 
     public static void pesquisarProduto() {
