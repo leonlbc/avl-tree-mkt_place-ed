@@ -11,6 +11,10 @@ public class Produto implements Comparable<Produto>{
         this.estoque = estoque;
     }
 
+    public Produto(int codigo) {
+        this.codigo = codigo;
+    }
+
     //Apenas getter, mudar o codigo quebraria arvore
     public int getCodigo() {
         return codigo;
@@ -52,9 +56,9 @@ public class Produto implements Comparable<Produto>{
 
     @Override
     public String toString() {
-        return "{ Codigo[" + this.getCodigo() + "] " +
-                this.getNome() + ": " +
-                this.getValorUnitario() + "$ -- " +
-                this.getEstoque() + "em estoque }";
+        return "|   Codigo [" + this.getCodigo() + "]  " +
+                this.getNome().toUpperCase() + ": $" +
+                this.getValorUnitario() + " -- " +
+                this.getEstoque() + " unidades em estoque   |";
     }
 }
