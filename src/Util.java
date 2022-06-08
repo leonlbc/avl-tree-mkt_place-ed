@@ -1,6 +1,7 @@
 import static javax.swing.JOptionPane.showInputDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
@@ -41,7 +42,7 @@ public class Util {
 	}
 
 	public static void listarProduto() {
-        ArrayList<Produto> arrayProdutos = new ArrayList<Produto>();
+        List<Produto> arrayProdutos = new ArrayList<Produto>();
 
         arrayProdutos = ab.emOrdem(arrayProdutos);
         String listaProdutos = arrayProdutos.stream().map(Object::toString)
@@ -81,7 +82,18 @@ public class Util {
         return produto;
     }
 
+	public static void maiorAltura(){
+		List<No<Produto>> arrayProdutos = new ArrayList<No<Produto>>();
+		arrayProdutos = ab.emOrdemNo(arrayProdutos);
+		Integer max = arrayProdutos.stream()
+			.mapToInt((prod) -> prod.altura)
+			.max()
+			.orElse(0);
+		JOptionPane.showMessageDialog(null, max);
+	}
+
 	public static void exit() {
+		maiorAltura();
 		System.exit(0);
 	}
 

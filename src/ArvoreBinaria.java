@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ArvoreBinaria<T extends Comparable<T>> {
     No<T> raiz;
@@ -76,14 +79,20 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         return rebalancear(raiz);
     }
 
-    public ArrayList<T> emOrdem(ArrayList<T> listaEmOrdem) { 
+    public List<T> emOrdem(List<T> listaEmOrdem) { 
+        List<No<T>> listaNo = listaEmOrdem.stream().map((t) -> new No<T>(t)).collect(Collectors.toList());
+        return emOrdemRecursivo(raiz, listaNo)
+        .stream().map((t) -> t.dado).collect(Collectors.toList());
+    } 
+
+    public List<No<T>> emOrdemNo(List<No<T>> listaEmOrdem) { 
         return emOrdemRecursivo(raiz, listaEmOrdem);
     } 
    
-    private ArrayList<T> emOrdemRecursivo(No<T> raiz, ArrayList<T> listaEmOrdem) {
+    private List<No<T>> emOrdemRecursivo(No<T> raiz, List<No<T>> listaEmOrdem) {
         if (raiz != null) { 
             emOrdemRecursivo(raiz.esquerda, listaEmOrdem); 
-            listaEmOrdem.add(raiz.dado);
+            listaEmOrdem.add(raiz);
             emOrdemRecursivo(raiz.direita, listaEmOrdem);
         }
         return listaEmOrdem;
@@ -167,8 +176,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
             no = rotacionaEsquerda(no);
           }
         }
-      
         return no;
-      }
+    }
 }
 
