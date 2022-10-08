@@ -15,7 +15,6 @@ public class Produto implements Comparable<Produto>{
         this.codigo = codigo;
     }
 
-    //Apenas getter, mudar o codigo quebraria arvore
     public int getCodigo() {
         return codigo;
     }
