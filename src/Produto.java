@@ -37,7 +37,7 @@ public class Produto implements Comparable<Produto>{
 
     public void vender(int qtd) {
         if (this.estoque < qtd) {
-            //erro
+            System.out.println("Quantidade indisponivel");
         } else {
             this.estoque -= qtd;
         }
